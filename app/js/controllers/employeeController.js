@@ -11,9 +11,23 @@ angular.module('empInfoApp')
 
         $scope.update = function(){
 
-            if(!$scope.employeeForm.uFirstName.$error.required && !$scope.employeeForm.uLastName.$error.required &&
-                !$scope.employeeForm.uEmail.$error.required && !$scope.employeeForm.uEmail.$error.email &&
-                !$scope.employeeForm.uHiredDate.$error.required && !$scope.employeeForm.uSalary.$error.required) {
+            var formKeys = Object.keys($scope.employeeForm);
+            var canUpdate = true;
+
+            for(var i = 0; i < formKeys.length; i++){
+                if($scope.employeeForm[formKeys[i]] && $scope.employeeForm[formKeys[i]].$error &&
+                    $scope.employeeForm[formKeys[i]].$error.required){
+                    canUpdate = false;
+                    break;
+                }
+                if($scope.employeeForm[formKeys[i]] && $scope.employeeForm[formKeys[i]].$error &&
+                    $scope.employeeForm[formKeys[i]].$error.email){
+                    canUpdate = false;
+                    break;
+                }
+            }
+
+            if(canUpdate){
                 EmployeeCommand.saveChanges();
             }
         };
