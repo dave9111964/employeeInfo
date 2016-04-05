@@ -8,7 +8,7 @@ angular.module('empInfoApp')
     .service('EmployeeCommand', ['EmployeeSvc', function(EmployeeSvc) {
 
         var employees = [];
-        var workingEmployee = new EmployeeSvc.Employee();;
+        var workingEmployee = new EmployeeSvc.Employee();
         var activeEmployee = null;
 
         var saveChanges = function(){
@@ -35,6 +35,7 @@ angular.module('empInfoApp')
                 if(employees[i].email === email){
                     activeEmployee = this.employees[i];
                     workingEmployee.copyToThis(activeEmployee);
+                    break;
                 }
             }
         };
