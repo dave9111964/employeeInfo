@@ -2,7 +2,7 @@
     <ul class="nav nav-sidebar">
         <li ng-repeat="employee in employees" ng-class="{'active':isCurrentEmployee(employee)}">
             <a ng-click="setCurrentEmployee(employee.email)">
-                {{employee.firstName}}, {{employee.lastName}}
+                {{employee.firstName}} {{employee.lastName}}
             </a>
         </li>
     </ul>
