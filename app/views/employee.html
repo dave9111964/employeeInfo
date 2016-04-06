@@ -1,0 +1,53 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="EmployeeCnt">
+    <form name="employeeForm" class="css-form" novalidate>
+        <label>
+            First Name:
+            <input type="text" ng-model="workingEmployee.firstName" name="uFirstName" required="" />
+            <br />
+            <div ng-show="employeeForm.$submitted || employeeForm.uFirstName.$touch">
+                <div class="errorMessage" ng-show="employeeForm.uFirstName.$error.required">Please enter employee first name.</div>
+            </div>
+        </label>
+        <br />
+        <label>
+            Last Name:
+            <input type="text" ng-model="workingEmployee.lastName" name="uLastName" required="" />
+            <br />
+            <div ng-show="employeeForm.$submitted || employeeForm.uLastName.$touch">
+                <div class="errorMessage" ng-show="employeeForm.uLastName.$error.required">Please enter employee last name.</div>
+            </div>
+        </label>
+        <br />
+        <label>
+            EMail:
+            <input type="email" ng-model="workingEmployee.email" name="uEmail" required="" style="margin-left: 34px;"/>
+            <br />
+            <div ng-show="employeeForm.$submitted || employeeForm.uEmail.$touch">
+                <div class="errorMessage" ng-show="employeeForm.uEmail.$error.required">Please enter employee email.</div>
+                <div class="errorMessage" ng-show="employeeForm.uEmail.$error.email">Please enter valid email.</div>
+            </div>
+        </label>
+        <br />
+        <label>
+            Hired Date:
+            <input type="date" ng-model="workingEmployee.hiredDate" name="uHiredDate" required="" style="width: 192px;"/>
+            <br />
+            <div ng-show="employeeForm.$submitted || employeeForm.uHiredDate.$touch">
+                <div class="errorMessage" ng-show="employeeForm.uHiredDate.$error.required">Please enter employee hired date.</div>
+            </div>
+        </label>
+        <br />
+        <label>
+            Salary:
+            <input type="number" ng-model="workingEmployee.salary" name="uSalary" required="" style="margin-left: 27px;"/>
+            <br />
+            <div ng-show="employeeForm.$submitted || employeeForm.uSalary.$touch">
+                <div class="errorMessage" ng-show="employeeForm.uSalary.$error.required">Please enter employee salary.</div>
+            </div>
+        </label>
+        <br />
+        <button class="btn btn-default" ng-click="reset()">Reset</button>
+        <button ng-disabled="employeeForm.$error.length > 0 || employeeForm.$pristine" class="btn btn-primary" ng-click="update()">Save</button>
+        <button class="btn btn-success" ng-click="addNew()">Add</button>
+    </form>
+</div>
